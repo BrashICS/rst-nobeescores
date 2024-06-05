@@ -4,16 +4,128 @@
     <title>
       Game
     </title>
-      <script src="/MyFolder/script.js"></script>
     </head>
 
+        </script>
+    </body>
+    </html>
 
-    <body>
-      <center>
-        <h1>
-          NHL Team's Word Scramble
-        </h1>
-      </center>
+
+<body>
+
+<head>
+<title>NHL Team Word Scramble</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+text-align: center;
+}
+scramble-item {
+  margin: 10px 0;
+}
+.scramble-item input {
+margin-left: 10px;
+}
+.result {
+margin-top: 20px;
+}
+</style>
+</head>
+<body>
+<h1>NHL Team Word Scramble</h1>
+<div id="scrambled-words"></div>
+<button onclick="checkAnswers()">Submit</button>
+<div id="results" class="result"></div>
+
+<script>
+let teams = [
+"Anaheim Ducks", "Arizona Coyotes", "Boston Bruins", "Buffalo Sabres",
+"Calgary Flames", "Carolina Hurricanes", "Chicago Blackhawks", "Colorado Avalanche",
+"Columbus Blue Jackets", "Dallas Stars", "Detroit Red Wings", "Edmonton Oilers",
+"Florida Panthers", "Los Angeles Kings", "Minnesota Wild", "Montreal Canadiens",
+"Nashville Predators", "New Jersey Devils", "New York Islanders", "New York Rangers",
+"Ottawa Senators", "Philadelphia Flyers", "Pittsburgh Penguins", "San Jose Sharks",
+"Seattle Kraken", "St. Louis Blues", "Tampa Bay Lightning", "Toronto Maple Leafs",
+"Vancouver Canucks", "Vegas Golden Knights", "Washington Capitals", "Winnipeg Jets"
+];
+
+function shuffle(array) {
+for (let i = array.length - 1; i > 0; i--) {
+const j = Math.floor(Math.random() * (i + 1));
+[array[i], array[j]] = [array[j], array[i]];
+}
+}
+
+function scrambleWord(word) {
+let characters = word.split('');
+let letterIndices = [];
+
+characters.forEach((char, index) => {
+if (/[a-zA-Z]/.test(char)) {
+letterIndices.push(index);
+}
+});
+
+for (let i = letterIndices.length - 1; i > 0; i--) {
+const j = Math.floor(Math.random() * (i + 1));
+[characters[letterIndices[i]], characters[letterIndices[j]]] = [characters[letterIndices[j]], characters[letterIndices[i]]];
+}
+
+return characters.join('');
+}
+
+shuffle(teams);
+
+let scrambledWordsDiv = document.getElementById('scrambled-words');
+
+teams.forEach(team => {
+let scrambledTeam = scrambleWord(team);
+
+let scrambleItemDiv = document.createElement('div');
+scrambleItemDiv.className = 'scramble-item';
+
+let scrambledText = document.createElement('span');
+scrambledText.textContent = scrambledTeam;
+
+let inputField = document.createElement('input');
+inputField.type = 'text';
+inputField.placeholder = 'Type the unscrambled name';
+inputField.dataset.original = team;
+
+scrambleItemDiv.appendChild(scrambledText);
+scrambleItemDiv.appendChild(inputField);
+
+scrambledWordsDiv.appendChild(scrambleItemDiv);
+              });
+
+function checkAnswers() {
+let inputs = document.querySelectorAll('.scramble-item input');
+let resultsDiv = document.getElementById('results');
+resultsDiv.innerHTML = '';
+
+inputs.forEach(input => {
+let original = input.dataset.original;
+let userAnswer = input.value.trim();
+
+let result = document.createElement('div');
+if (userAnswer.toLowerCase() === original.toLowerCase()) {
+result.textContent = `Correct! ${original}`;
+result.style.color = 'green';
+} else {
+result.textContent = `Wrong! ${original} was the correct answer.`;
+result.style.color = 'red';
+}
+resultsDiv.appendChild(result);
+});
+}
+</script>
+      </body>
+      </html>
+
+          </script>
+      </body>
+      </html>
+
     </body>
 
 

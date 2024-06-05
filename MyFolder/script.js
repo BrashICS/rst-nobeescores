@@ -1,8 +1,9 @@
-const words = ("Anaheim Ducks", "Arizona Coyotes", "Boston Bruins","Buffalo Sabres" "Calgary Flames" "Carolina Hurricanes","Chicago Blackhawks","Colorado Avalanche" "Columbus Blue Jackets", "Dallas Stars" "Detroit Red Wings","Edmonton Oilers","Florida Panthers","Los Angeles Kings", "Minnesota Wild", "Montreal Canadiens", "Nashville Predators", "New Jersey Devils", "New York Islanders", "New York Rangers" "Ottawa Senators", "Philadelphia Flyers", "Pittsburgh Penguins", "San Jose Sharks", "Seattle Kraken", "St. Louis Blues", "Tampa Bay Lightning", "Toronto Maple Leafs", "Vancouver Canucks", "Vegas Golden Knights" "Washington Capitals", "Winnipeg Jets",)
 
-let teams = ["Anaheim Ducks", "Arizona Coyotes", "Boston Bruins","Buffalo Sabres" "Calgary Flames" "Carolina Hurricanes","Chicago Blackhawks","Colorado Avalanche" "Columbus Blue Jackets", "Dallas Stars" "Detroit Red Wings","Edmonton Oilers","Florida Panthers","Los Angeles Kings", "Minnesota Wild", "Montreal Canadiens", "Nashville Predators", "New Jersey Devils", "New York Islanders", "New York Rangers" "Ottawa Senators", "Philadelphia Flyers", "Pittsburgh Penguins", "San Jose Sharks", "Seattle Kraken", "St. Louis Blues", "Tampa Bay Lightning", Toronto Maple Leafs, Vancouver Canucks , Vegas Golden Knights, Washington Capitals, Winnipeg Jets,]
-let mix = math.random();
-let teams = teams.lenght;
-let randindex = math.floor (rand * teams);
-let randomteams = teams[randindex]
 
+for (let i = teams.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [teams[i], teams[j]] = [teams[j], teams[i]];
+}
+
+let scrambledTeam = teams.pop();
+document.getElementById('scrambled-word').textContent = scrambledTeam;
