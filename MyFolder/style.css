@@ -1,0 +1,25 @@
+body {
+  overflow-x: hidden;
+}
+html {
+  margin: 20xp;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+
+#list {
+  display: flex;
+  float: left;
+}
+#bodyText {
+  display: flex;
+  float: right;
+}
+
+#instuctions {
+color: rgb(24, 76, 155);
+
+}
+
