@@ -23,3 +23,26 @@ color: rgb(24, 76, 155);
 
 }
 
+body {
+font-family: Arial, sans-serif;
+text-align: center;
+}
+scramble-item {
+  margin: 10px 0;
+}
+.scramble-item input {
+margin-left: 10px;
+}
+.result {
+margin-top: 20px;
+}
+#list {
+  float: left;
+  width: 25%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+#bodyText {
+  margin-left: 30%;
+  padding: 10px;
+}
