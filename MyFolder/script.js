@@ -22,25 +22,25 @@ const words = [
       document.getElementById('result').textContent = '';
         document.getElementById('guess').value = '';
     }
+
 // this function checks the users guess
 function checkGuess() {
   const guess = document.getElementById('guess').value.trim(); // Trim the guess
   const originalWord = document.getElementById('scrambled-word').dataset.originalWord.trim(); // Trim the original word
 
   if (guess.toLowerCase() === originalWord.toLowerCase()) {
-      document.getElementById('result').textContent = 'Correct!';
-      // this shws that the wrd is crrect
-      document.getElementById('scrambled-word').textContent = originalWord;
-      setTimeout(startGame, 1000);
+  document.getElementById('result').textContent = 'Correct!';
+  // this shows that the word is correct
+  document.getElementById('scrambled-word').textContent = originalWord;
+  setTimeout(startGame, 1000);
   } else {
-      document.getElementById('result').textContent = 'Try again!';
+  document.getElementById('result').textContent = 'Try again!';
   }
 }
 
+// this Starts a new game when the page loads
+window.onload = startGame;
 
-    // this Starts a new game when the page loads
-    window.onload = startGame;
-
-    // this Adds an event listener to the submit button
-    document.getElementById('submit-guess').addEventListener('click', checkGuess);
+// this Adds an event listener to the submit button
+document.getElementById('submit-guess').addEventListener('click', checkGuess);
 
