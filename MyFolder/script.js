@@ -11,7 +11,7 @@ const words = [
       }
     return letters.join('');
     }
-
+    
     function startGame() {
       const word = words[Math.floor(Math.random() * words.length)];
       const scrambledWord = scrambleWord(word);
